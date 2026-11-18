@@ -1,5 +1,5 @@
 import pandas as pd
-from ethnicolr import lookup_census_first_name
+from census import lookup_census_first_name
 import matplotlib.pyplot as plt
 import csv
 

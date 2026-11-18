@@ -11,7 +11,7 @@ A Python app for exploring baby name data from different countries and years: se
 - **Example data or your own:** pick one of the bundled data sets (Australia, California, Newfoundland and Scotland), or upload a CSV or Excel file.
 - **Flexible headers:** columns such as Gender, Position, Total or First Name are recognised and mapped automatically.
 - **Six views:** Ethnicity, Search, Top 10 (by year and sex), Graph (compare names over time), Alphabetical, and Data (with a CSV download).
-- **Ethnicity estimates:** uses the 2020 U.S. Census first-name table through `ethnicolr`.
+- **Ethnicity estimates:** uses the U.S. Census Bureau's 2020 first-name table, bundled with the app.
 
 ## Running it
 

@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pandas as pd
 import streamlit as st
-from ethnicolr import lookup_census_first_name
+from census import lookup_census_first_name
 
 ROOT = Path(__file__).resolve().parent.parent
 EXAMPLE_DIRS = [ROOT / "main" / "Testing Files", ROOT / "names3to4" / "Testing Files"]
