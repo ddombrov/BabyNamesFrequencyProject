@@ -18,7 +18,7 @@ A Python app for exploring baby name data from different countries and years: se
 Requires Python 3.
 
 ```
-pip install streamlit pandas openpyxl ethnicolr
+pip install -r requirements.txt
 streamlit run drive-download-20240113T005539Z-001/main/app.py
 ```
 

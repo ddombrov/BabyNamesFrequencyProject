@@ -1,6 +1,5 @@
 import pandas as pd
-from subprocess import call
-from ethnicolr import census_ln
+from ethnicolr import lookup_census_first_name
 import matplotlib.pyplot as plt
 import csv
 
@@ -126,28 +125,15 @@ def processFile():
     while True:
         file_path = input('Enter the name of the file: ')
         try:
-            df = pd.read_csv(file_path, header=None, usecols=[0, 1, 2, 3, 4], names=["Year", "Sex", "Rank", "Name", "Count"])
+            df = headerChange(pd.read_csv(file_path, delimiter=',', encoding='latin1'))
             break
         except FileNotFoundError:
             print('Invalid file name entered. Please enter a valid file name.')
-    
-    while True:
-        yearInput = input('Enter the year (either 2000 or 2010): ')
-        if yearInput not in ['2000', '2010']:
-            print('Invalid year entered. Please enter either 2000 or 2010.')
-        else:
-            year = int(yearInput)
-            break
-    
-    census_ln(df, 'Name')
 
-    call(["census_ln", "-y", str(year), "-o", "output-census" + str(year) + ".csv", "-l", "3", file_path])
+    names = df[['Name']].dropna().drop_duplicates()
+    df_output = lookup_census_first_name(names, 'Name')
+    df_output = df_output[['Name', 'pctwhite', 'pctblack', 'pctapi', 'pctaian', 'pct2prace', 'pcthispanic']].dropna()
 
-    # read the output file and print its contents
-    df_output = pd.read_csv('output-census' + str(year) + '.csv', skiprows=[1])
-    
-    df_output = df_output.dropna()
-    
     return df_output.to_string(index=False, float_format='%.2f')
 
 
