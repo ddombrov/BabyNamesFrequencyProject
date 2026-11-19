@@ -68,10 +68,14 @@ def examples():
     return files
 
 
-st.set_page_config(page_title="Baby Name Data", layout="wide")
-st.title("Baby Name Data")
+ICONS = Path(__file__).resolve().parent / "icons"
+st.set_page_config(page_title="Baby Name Data", page_icon=str(ICONS / "chart-up.png"), layout="wide")
+icon_column, title_column = st.columns([1, 14], vertical_alignment="center")
+icon_column.image(str(ICONS / "chart-line.png"), width=72)
+title_column.title("Baby Name Data")
 
 with st.sidebar:
+    st.image(str(ICONS / "chart-down.png"), width=64)
     st.header("Data file")
     mode = st.radio("Source", ["Pick an example", "Upload my own"])
     if mode == "Pick an example":
